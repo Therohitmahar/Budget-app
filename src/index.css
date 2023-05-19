@@ -1,0 +1,19 @@
+.button-pair {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+@media screen and (max-width: 480px) {
+  .button-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .button-pair button {
+    font-size: 14px;
+  }
+  .btn-sm {
+    font-size: px;
+  }
+}
