@@ -3,7 +3,21 @@
   flex-direction: row;
   gap: 8px;
 }
-
+.When-empty {
+  height: "55vh";
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+  justify-content: "center";
+  margin: "40px";
+  text-align: center;
+}
+.When-empty h1 {
+  color: rgb(66, 0, 0);
+}
+.When-empty h2 {
+  color: rgb(25, 126, 0);
+}
 @media screen and (max-width: 480px) {
   .button-pair {
     display: flex;

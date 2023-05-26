@@ -10,6 +10,7 @@ import TotalBudgetCard from "./components/TotalBudgetCard";
 import ViewExpenseModal from "./components/ViewExpensesModal";
 import useLocalStorage from "./utils/useLocalStorage";
 import "./index.css";
+import capitalFirstLetter from "./utils/FirstLetterFormatter";
 
 function App() {
   const [name, setName] = useLocalStorage("name", "Rohit");
@@ -19,11 +20,8 @@ function App() {
   const [viewModalBudgetId, setViewModalBudgetId] = useState();
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState();
 
-  const { budgets, getBudgetExpenses } = useBudget();
+  const { budgets, getBudgetExpenses, expense } = useBudget();
 
-  function capitalFirstLetter(word) {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }
   function openAddExpenseModal(budgetId) {
     setShowAddExpenseModal(true);
     setAddExpenseModalBudgetId(budgetId);
@@ -61,37 +59,56 @@ function App() {
             </Button>
           </div>
         </Stack>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(300px, 1fr))",
-            gap: "1rem",
-            alignItems: "flex-start",
-          }}
-        >
-          {budgets.map((budget) => {
-            const amount = getBudgetExpenses(budget.id).reduce(
-              (total, expense) => total + expense.amount,
-              0
-            );
+        {budgets.length == 0 && expense.length == 0 ? (
+          <div className="When-empty">
+            <h1>Your Budget Is Empty</h1>
+            <h2>This App will make you smart in planning your expenses.</h2>
+            <p>
+              This is an app that helps you create a monthly budget, track your
+              expenses, and set specific amounts for different spending
+              categories. Click{" "}
+              <a
+                style={{ fontWeight: "bold" }}
+                href="https://scribehow.com/shared/Netlify_Workflow__PoSXGsEWQhy_aQkI6mlpYg"
+              >
+                Here
+              </a>{" "}
+              to learn more.
+            </p>
+          </div>
+        ) : (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill,minmax(300px, 1fr))",
+              gap: "1rem",
+              alignItems: "flex-start",
+            }}
+          >
+            {budgets.map((budget) => {
+              const amount = getBudgetExpenses(budget.id).reduce(
+                (total, expense) => total + expense.amount,
+                0
+              );
 
-            return (
-              <BudgetCard
-                key={budget.id}
-                name={budget.name}
-                amount={amount}
-                max={budget.max}
-                onAddExpenseClick={() => openAddExpenseModal(budget.id)}
-                onViewExpenseClick={() => setViewModalBudgetId(budget.id)}
-              />
-            );
-          })}
-          <UncategorizedBudgetcard
-            onAddExpenseClick={openAddExpenseModal}
-            onViewExpenseClick={() => setViewModalBudgetId(UNCATEGORIZED_ID)}
-          />
-          <TotalBudgetCard hidesButton={true} />
-        </div>
+              return (
+                <BudgetCard
+                  key={budget.id}
+                  name={budget.name}
+                  amount={amount}
+                  max={budget.max}
+                  onAddExpenseClick={() => openAddExpenseModal(budget.id)}
+                  onViewExpenseClick={() => setViewModalBudgetId(budget.id)}
+                />
+              );
+            })}
+            <UncategorizedBudgetcard
+              onAddExpenseClick={openAddExpenseModal}
+              onViewExpenseClick={() => setViewModalBudgetId(UNCATEGORIZED_ID)}
+            />
+            <TotalBudgetCard hidesButton={true} />
+          </div>
+        )}
       </Container>
       <AddBudgetModal
         show={showAddBudgetModal}

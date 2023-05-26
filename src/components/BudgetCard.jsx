@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card, ProgressBar, Stack } from "react-bootstrap";
 import formatter from "../utils/currencyFormatter";
+import capitalFirstLetter from "../utils/FirstLetterFormatter";
 
 function BudgetCard({
   name,
@@ -14,7 +15,7 @@ function BudgetCard({
     <Card>
       <Card.Body>
         <Card.Title className="d-flex justify-content-between align-item-baseline fw-normal mb-3">
-          <div className="me-2">{name}</div>
+          <div className="me-2">{capitalFirstLetter(name)}</div>
           <div className="d-flex align-items-baseline">
             {formatter(amount)}
             {max && (
