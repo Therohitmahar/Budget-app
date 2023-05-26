@@ -19,7 +19,7 @@ function ViewExpenseModal({ budgetId, handleClose }) {
         <Modal.Header closeButton>
           <Modal.Title>
             <Stack direction="horizontal" gap="2">
-              <div>Expenses - {capitalFirstLetter(budget?.name)}</div>
+              <div>Expenses - {budget?.name}</div>
               {budgetId !== UNCATEGORIZED_ID && (
                 <Button
                   onClick={() => {
