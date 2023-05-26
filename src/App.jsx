@@ -28,7 +28,6 @@ function App() {
   }
 
   const title = capitalFirstLetter(name);
-  console.log(title);
   return (
     <>
       <Container>
