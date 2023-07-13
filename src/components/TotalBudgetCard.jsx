@@ -7,7 +7,6 @@ function TotalBudgetCard() {
   const amount = expense.reduce((total, expe) => total + expe.amount, 0);
   const max = budgets.reduce((total, budget) => total + budget.max, 0);
 
-  console.log("max form total  ", max);
   return max === 0 ? null : (
     <BudgetCard amount={amount} name="Total" max={max} hidesButton />
   );

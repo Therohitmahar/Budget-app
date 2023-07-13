@@ -9,12 +9,11 @@ import UncategorizedBudgetcard from "./components/UncategorizedBudgetcard";
 import TotalBudgetCard from "./components/TotalBudgetCard";
 import ViewExpenseModal from "./components/ViewExpensesModal";
 import useLocalStorage from "./utils/useLocalStorage";
-import "./index.css";
 import capitalFirstLetter from "./utils/FirstLetterFormatter";
+import "./index.css";
 
 function App() {
   const [name, setName] = useLocalStorage("name", "Rohit");
-
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
   const [viewModalBudgetId, setViewModalBudgetId] = useState();
@@ -29,9 +28,9 @@ function App() {
 
   const title = capitalFirstLetter(name);
   return (
-    <>
+    <div className="main">
       <Container>
-        <Stack direction="horizontal" gap="2" className="mb-4 mt-4">
+        <Stack direction="horizontal" gap="2" className="mb-4 mt-4 navbar p-3">
           <div className="me-auto">
             <h1>{`${title}'s Budget`}</h1>
             <Button
@@ -122,7 +121,7 @@ function App() {
         budgetId={viewModalBudgetId}
         handleClose={() => setViewModalBudgetId()}
       />
-    </>
+    </div>
   );
 }
 
