@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: #e5e5f7;
   opacity: 1;
   background-image: repeating-radial-gradient(
@@ -7,10 +7,10 @@ body {
       #e5e5f7 10px
     ),
     repeating-linear-gradient(#444cf755, #444cf7);
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-size: cover;
   height: auto;
-}
+} */
 .main {
   height: 90dvh;
   backdrop-filter: blur(2px);
@@ -21,11 +21,11 @@ body {
   flex-direction: row;
   gap: 8px;
 }
-.card {
-  box-shadow: inset 0 1px 5px 0 black;
-  /* background: linear-gradient(to right, white, wheat); */
-  background: linear-gradient(to right, white, rgb(241, 229, 207));
-}
+/* .card { */
+/* box-shadow: inset 0 1px 5px 0 black; */
+/* background: linear-gradient(to right, white, wheat); */
+/* background: linear-gradient(to right, white, rgb(241, 229, 207)); */
+/* } */
 .When-empty {
   height: "55vh";
   display: "flex";
@@ -43,12 +43,13 @@ body {
 }
 
 .navbar {
-  background: linear-gradient(to right, wheat, white);
-  border-radius: 1rem;
-  box-shadow: inset 0 1px 5px 0 black;
+  /* background: linear-gradient(to right, wheat, white); */
+  border-radius: 0.5rem;
+  background-color: white;
+  /* box-shadow: inset 0 1px 5px 0 black; */
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .button-pair {
     display: flex;
     /* flex-direction: column; */

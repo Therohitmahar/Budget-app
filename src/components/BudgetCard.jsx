@@ -11,8 +11,9 @@ function BudgetCard({
   onAddExpenseClick,
   onViewExpenseClick,
 }) {
+  const classlist = amount > max ? "bg-danger bg-opacity-10" : "bg-light";
   return (
-    <Card>
+    <Card className={classlist}>
       <Card.Body>
         <Card.Title className="d-flex justify-content-between align-item-baseline fw-normal mb-3">
           <div className="me-2">{capitalFirstLetter(name)}</div>
@@ -52,9 +53,9 @@ function BudgetCard({
 }
 function getBarVariant(amount, max) {
   let ratio = amount / max;
-  if (ratio < 0.25) return "success";
-  if (ratio < 0.5) return "primary";
-  if (ratio < 0.75) return "warning";
+  if (ratio < 0.5) return "success";
+  if (ratio < 0.75) return "primary";
+  if (ratio <= 1) return "warning";
   return "danger";
 }
 
