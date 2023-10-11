@@ -48,6 +48,9 @@ function BudgetCard({
           </Stack>
         )}
       </Card.Body>
+      <Card.Footer className="d-flex justify-content-between">
+        <span>Balance: </span> <span>{formatter(max - amount)}</span>
+      </Card.Footer>
     </Card>
   );
 }
